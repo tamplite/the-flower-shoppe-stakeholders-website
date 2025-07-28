@@ -2,6 +2,7 @@ import Header from '@/components/header';
 import Footer from '@/components/footer';
 import Link from 'next/link';
 import { Fragment } from 'react';
+import PhaseCard from '@/components/PhaseCard'; // Ensure PhaseCard is imported
 
 // Define a type for our project phases
 interface Phase {
@@ -33,16 +34,19 @@ const projectPhases: Phase[] = [
   {
     id: 'phase1',
     title: 'Phase 1: Pre-release - Buzz & Basic Gallery (1 Month Duration)',
-    executiveSummary: 'This initial, rapid phase is designed to generate immediate traction and build momentum for "The Flower Shoppe" even before the full e-commerce site is live. It focuses on creating a minimal online presence with a basic product gallery and a robust social media strategy. This phase\'s development for the social media MVP is offered free of charge to demonstrate value and build initial excitement.',
+    executiveSummary: 'This initial, rapid phase is designed to generate immediate traction and build momentum for "The Flower Shoppe" even before the full e-commerce site is live. It focuses on creating a minimal online presence with a basic product gallery and strategic social media guidance. This phase\'s development for initial social media assets is offered free of charge to demonstrate value and build initial excitement.',
     duration: '1 Month',
-    essay: 'At the outset, "The Flower Shoppe" website is currently non-existent. The goal of this pre-release phase is to transform this blank slate into a buzzing anticipation. We\'re not just building a website; we\'re building a community and a brand presence tailored to a unique market. This phase is about creating a digital storefront that, while not yet transactional, is highly engaging. We will focus on visual appeal and compelling content to capture interest. The social media MVP is crucial here – it\'s the initial handshake with potential customers, inviting them into the world of "The Flower Shoppe" and setting the stage for the full launch. This strategic investment in early buzz is designed to hit the ground running once the full e-commerce capabilities are deployed.',
+    essay: 'At the outset, "The Flower Shoppe" website is currently non-existent. The goal of this pre-release phase is to transform this blank slate into a buzzing anticipation. We\'re not just building a website; we\'re building a community and a brand presence tailored to a unique market. This phase is about creating a digital storefront that, while not yet transactional, is highly engaging. We will focus on visual appeal and compelling content to capture interest. TresPies will provide strategic guidance and initial assets for social media, empowering the client to manage their own presence and engage with potential customers, setting the stage for the full launch. This strategic investment in early buzz is designed to hit the ground running once the full e-commerce capabilities are deployed.',
     keyFeatures: [
       'Basic Product Gallery Page (static)',
-      'Social Media MVP & Strategy (FREE Development)',
+      'Social Media Strategy & Initial Asset Creation (FREE Development)',
+      'Guidance for local review generation',
+      'Initial blog post content (1-2 posts)',
       'Email List Integration'
     ],
     warnings: [
-      'Client must provide all product images, descriptions, and initial social media content/ideas. Timely provision is critical.',
+      'Client must provide all product images, descriptions, and initial content ideas. Timely provision is critical.',
+      'TresPies provides strategy and initial assets; active social media management and posting remain the client\'s responsibility.',
       'Any paid advertising or premium social media tools are the client\'s responsibility. Email marketing services may incur costs beyond free tiers.'
     ]
   },
@@ -122,36 +126,6 @@ const projectPhases: Phase[] = [
     ]
   }
 ];
-
-// Reusable component for displaying a single phase
-function PhaseCard({ phase }: { phase: Phase }) {
-  return (
-    <div id={phase.id} className="bg-white rounded-lg shadow-lg p-6 mb-8 border border-flower-light-pink">
-      <h3 className="text-2xl font-bold text-flower-green mb-3">{phase.title}</h3>
-      <p className="text-flower-pink font-semibold mb-2">{phase.duration}</p>
-      <p className="text-gray-700 mb-4">{phase.executiveSummary}</p>
-      <p className="text-gray-600 italic mb-4">{phase.essay}</p>
-
-      <h4 className="text-xl font-semibold text-flower-green mb-2">Key Features:</h4>
-      <ul className="list-disc list-inside text-gray-700 mb-4">
-        {phase.keyFeatures.map((feature, index) => (
-          <li key={index}>{feature}</li>
-        ))}
-      </ul>
-
-      {phase.warnings.length > 0 && (
-        <Fragment>
-          <h4 className="text-xl font-semibold text-tres-red mb-2">Important Warnings:</h4>
-          <ul className="list-disc list-inside text-gray-600">
-            {phase.warnings.map((warning, index) => (
-              <li key={index} className="text-sm">{warning}</li>
-            ))}
-          </ul>
-        </Fragment>
-      )}
-    </div>
-  );
-}
 
 
 export default function PlanPage() {

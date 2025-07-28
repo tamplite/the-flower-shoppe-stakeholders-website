@@ -8,13 +8,13 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        // The Flower Shoppe's Brand Colors
+        // The Flower Shoppe's Brand Colors (main palette)
         'flower-pink': '#FF69B4', // Hot Pink
         'flower-green': '#228B22', // Forest Green
         'flower-light-pink': '#FFC0CB', // Light Pink
         'flower-dark-green': '#006400', // Dark Green
 
-        // TresPies Accent Colors (from logo)
+        // TresPies Accent Colors (from logo, for subtle branding/accents)
         'tres-coral': '#FF6B6B',
         'tres-yellow': '#FFD166',
         'tres-teal': '#4ECDC4',
@@ -22,7 +22,8 @@ module.exports = {
         'tres-red': '#C70039',
         'tres-crimson': '#900C3F',
 
-        // Base colors for UI elements
+        // Base colors for UI elements (using HSL for better theme integration)
+        // These map to the CSS variables defined in globals.css
         background: 'hsl(var(--background))',
         foreground: 'hsl(var(--foreground))',
         primary: {
@@ -45,11 +46,12 @@ module.exports = {
         input: 'hsl(var(--input))',
         ring: 'hsl(var(--ring))',
       },
-      // Adding custom font family if needed, e.g., 'Inter' or specific brand font
       fontFamily: {
         sans: ['Inter', 'sans-serif'], // Example, ensure 'Inter' is imported in globals.css or similar
       },
     },
   },
-  plugins: [],
+  plugins: [
+    require('@tailwindcss/typography'), // Required for 'prose' class to style Markdown content
+  ],
 }

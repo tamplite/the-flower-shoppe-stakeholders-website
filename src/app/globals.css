@@ -2,9 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Define CSS variables for HSL colors if you're using them in tailwind.config.ts */
-/* These are example values, adjust as needed or remove if using direct hex/rgb in config */
+/* Define CSS variables for HSL colors for light and dark themes */
+/* These are example values based on the pink/green palette, adjust as needed */
 :root {
+  /* Light Theme */
   --background: 0 0% 100%; /* White */
   --foreground: 222.2 47.4% 11.2%; /* Dark text */
 
@@ -26,6 +27,7 @@
 }
 
 .dark {
+  /* Dark Theme */
   --background: 224 71.4% 4.1%;
   --foreground: 210 20% 98%;
 
@@ -46,9 +48,29 @@
   --ring: 217.2 91.2% 59.8%;
 }
 
-/* Basic body styling */
+/* Basic body styling to ensure full height and flex layout */
 body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+}
+
+/* Base styling for typography for the contract page (prose) */
+/* Apply @tailwindcss/typography plugin styles */
+.prose {
+  h1, h2, h3, h4, h5, h6 {
+    @apply text-foreground; /* Ensure headings use foreground color */
+  }
+  a {
+    @apply text-primary hover:underline; /* Ensure links use primary color */
+  }
+  blockquote {
+    @apply border-l-4 border-primary pl-4 italic; /* Style blockquotes */
+  }
+  code {
+    @apply bg-gray-100 dark:bg-gray-800 px-1 py-0.5 rounded text-sm; /* Inline code */
+  }
+  pre {
+    @apply bg-gray-100 dark:bg-gray-800 p-4 rounded-lg overflow-x-auto; /* Code blocks */
+  }
 }
